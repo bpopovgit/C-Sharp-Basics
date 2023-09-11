@@ -4,11 +4,12 @@ int processorsCount = int.Parse(Console.ReadLine());
 int ramCount = int.Parse(Console.ReadLine());
 
 double graphicsCardsPrice = graphicsCardsCount * 250;
-double processorsPrice = graphicsCardsPrice * 0.35;
-double ramCountPrice = graphicsCardsPrice * 0.10;
+double processorsPrice = (double)graphicsCardsPrice * 0.35;
+double totalProcessorsPrice = processorsCount * processorsPrice;
+double ramCountPrice = (double)graphicsCardsPrice * 0.10;
 double totalRamPrice = ramCount * ramCountPrice;
 
-double finalSum = graphicsCardsPrice + processorsPrice + totalRamPrice;
+double finalSum = graphicsCardsPrice + totalProcessorsPrice + totalRamPrice;
 double discount = 0;
 
 if  (graphicsCardsCount > processorsCount)
@@ -20,7 +21,7 @@ finalSum = finalSum - discount;
 
 double difference = Math.Abs(finalSum - budget);
 
-if (budget > finalSum)
+if (budget >= finalSum)
 {
     Console.WriteLine($"You have {difference:f2} leva left!");
 }
